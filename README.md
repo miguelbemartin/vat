@@ -1,6 +1,8 @@
 # vat
 vat is a [Go](https://golang.org/) client library for accessing the Open Service by [European Commission](https://ec.europa.eu/commission/index_en)
 
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/miguelbemartin/vat/master/LICENSE)
+
 ## Getting Started
 
 ### Prerequisites
