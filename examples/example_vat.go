@@ -7,12 +7,18 @@ import (
 
 func main() {
 
-	client := vat.NewClient()
-
-	rate, err := client.Rate.Get("")
+	exist, err := vat.Validate("XXXX")
 	if err != nil {
-		// handle your error
+		fmt.Println("Error: ", err.Error())
 	}
 
-	fmt.Println("The rate for %d is %d", "", rate)
+	fmt.Println("The result is ", exist)
+
+	rate, err := vat.GetRate("ES")
+	if err != nil {
+		fmt.Println("Error: ", err.Error())
+	}
+
+	fmt.Println("The result is ", rate)
+
 }
