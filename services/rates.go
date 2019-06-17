@@ -1,30 +1,20 @@
-package vat
+package services
 
-import "errors"
+import (
+	"errors"
+	"github.com/miguelbemartin/vat/models"
+)
 
-type ratesService struct {
-	client *client
+type RatesService struct {
 }
 
-func newRatesService(client *client) *ratesService {
-	return &ratesService{
-		client,
+func NewRatesService() *RatesService {
+	return &RatesService{
 	}
 }
 
-type Rate struct {
-	Country      string
-	CountryCode  string
-	SuperReduced float64
-	Reduced      float64
-	Reduced1     float64
-	Reduced2     float64
-	Standard     float64
-	Parking      float64
-}
-
-func (s *ratesService) Get(code string) (*Rate, error) {
-	rates := map[string]Rate{
+func (s *RatesService) Get(code string) (*models.Rate, error) {
+	rates := map[string]models.Rate{
 		"ES": {
 			Country:      "Spain",
 			CountryCode:  "ES",

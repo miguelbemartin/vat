@@ -1,4 +1,4 @@
-package vat
+package services
 
 import (
 	"bytes"
@@ -15,21 +15,19 @@ const (
 	serviceURL = "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
 )
 
-// validatorService handles validation for european vats.
-type validatorService struct {
-	client *client
+// ValidatorService handles validation for european vats.
+type ValidatorService struct {
 }
 
-// newValidatorService creates a new handler for this service.
-func newValidatorService(client *client) *validatorService {
-	return &validatorService{
-		client,
+// NewValidatorService creates a new handler for this service.
+func NewValidatorService() *ValidatorService {
+	return &ValidatorService{
 	}
 }
 
 // Validate will validate the vat number format and the
 // existence by using the VIES VAT API (using SOAP).
-func (s *validatorService) Validate(number string) (bool, error) {
+func (s *ValidatorService) Validate(number string) (bool, error) {
 	format, err := s.ValidateNumberFormat(number)
 	existence := false
 
@@ -41,7 +39,7 @@ func (s *validatorService) Validate(number string) (bool, error) {
 }
 
 // ValidateNumberFormat validates a VAT number by its format.
-func (s *validatorService) ValidateNumberFormat(n string) (bool, error) {
+func (s *ValidatorService) ValidateNumberFormat(n string) (bool, error) {
 	patterns := map[string]string{
 		"AT": `U[A-Z0-9]{8}`,
 		"BE": `(0[0-9]{9}|[0-9]{10})`,
@@ -89,7 +87,7 @@ func (s *validatorService) ValidateNumberFormat(n string) (bool, error) {
 }
 
 // ValidateNumberExistence validates a VAT number by its existence using the VIES VAT API (using SOAP)
-func (s *validatorService) ValidateNumberExistence(n string) (bool, error) {
+func (s *ValidatorService) ValidateNumberExistence(n string) (bool, error) {
 	r, err := s.Lookup(n)
 	if err != nil {
 		return false, err
@@ -98,7 +96,7 @@ func (s *validatorService) ValidateNumberExistence(n string) (bool, error) {
 }
 
 // Lookup returns *viesResponse for a VAT number
-func (s *validatorService) Lookup(vatNumber string) (*viesResponse, error) {
+func (s *ValidatorService) Lookup(vatNumber string) (*viesResponse, error) {
 	if len(vatNumber) < 3 {
 		return nil, errors.New("vat: vat number is invalid")
 	}

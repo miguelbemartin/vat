@@ -1,21 +1,25 @@
 package vat
 
+import (
+	"github.com/miguelbemartin/vat/models"
+	"github.com/miguelbemartin/vat/services"
+)
+
 // Client holds a connection to the service
-type client struct {
+type Client struct {
 	// Services used for communicating with the external service.
-	validator *validatorService
-	rates     *ratesService
+	validator *services.ValidatorService
+	rates     *services.RatesService
 }
 
 // newClient will create http client to create http request
-func newClient() *client {
-
-
-	c := &client{}
+func newClient() *Client {
+	// Create a new instance
+	c := &Client{}
 
 	// Init services
-	c.validator = newValidatorService(c)
-	c.rates = newRatesService(c)
+	c.validator = services.NewValidatorService()
+	c.rates = services.NewRatesService()
 
 	return c
 }
@@ -27,7 +31,7 @@ func Validate(vat string) (bool, error) {
 }
 
 // GetRate will validate the vat number
-func GetRate(countryCode string) (*Rate, error) {
+func GetRate(countryCode string) (*models.Rate, error) {
 	client := newClient()
 	return client.rates.Get(countryCode)
 }
