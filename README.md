@@ -24,20 +24,24 @@ import (
 	"github.com/miguelbemartin/vat"
 )
 
-func main () {
+func main() {
 
-    //...
+	exist, err := vat.Validate("XXXX")
+	if err != nil {
+		fmt.Println("Error: ", err.Error())
+	}
 
-    client := vat.NewClient()
-    
-    rate, err := client.Rate.Get("")
-    if err != nil {
-      // handle your error
-    }
-    
-    fmt.Println("The rate for %d is %d", "", rate)
+	fmt.Println("The result is ", exist)
+
+	rate, err := vat.GetRate("ES")
+	if err != nil {
+		fmt.Println("Error: ", err.Error())
+	}
+
+	fmt.Println("The result is ", rate)
 
 }
+
 ```
 
 ## Run the tests
