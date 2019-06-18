@@ -1,5 +1,6 @@
 package models
 
+// Rate represents the vat rates per country.
 type Rate struct {
 	Country      string
 	CountryCode  string

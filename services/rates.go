@@ -2,17 +2,19 @@ package services
 
 import (
 	"errors"
+
 	"github.com/miguelbemartin/vat/models"
 )
 
-type RatesService struct {
-}
+// RatesService handle the rates of vat for the given country code.
+type RatesService struct {}
 
+// NewRatesService creates a new handler for this service.
 func NewRatesService() *RatesService {
-	return &RatesService{
-	}
+	return &RatesService{}
 }
 
+// Get will return a rate for the given country code.
 func (s *RatesService) Get(code string) (*models.Rate, error) {
 	rates := map[string]models.Rate{
 		"ES": {

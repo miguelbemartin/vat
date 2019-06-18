@@ -88,15 +88,15 @@ func (s *ValidatorService) ValidateNumberFormat(n string) (bool, error) {
 
 // ValidateNumberExistence validates a VAT number by its existence using the VIES VAT API (using SOAP)
 func (s *ValidatorService) ValidateNumberExistence(n string) (bool, error) {
-	r, err := s.Lookup(n)
+	r, err := s.lookup(n)
 	if err != nil {
 		return false, err
 	}
 	return r.Valid, nil
 }
 
-// Lookup returns *viesResponse for a VAT number
-func (s *ValidatorService) Lookup(vatNumber string) (*viesResponse, error) {
+// lookup returns *viesResponse for a VAT number
+func (s *ValidatorService) lookup(vatNumber string) (*viesResponse, error) {
 	if len(vatNumber) < 3 {
 		return nil, errors.New("vat: vat number is invalid")
 	}
