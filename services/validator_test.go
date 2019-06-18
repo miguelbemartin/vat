@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestValidate(t *testing.T) {
+func TestValidatorService_Validate(t *testing.T) {
 	var tests = []struct {
 		vatNumber     string
 		foundExpected bool

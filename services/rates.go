@@ -16,6 +16,10 @@ func NewRatesService() *RatesService {
 
 // Get will return a rate for the given country code.
 func (s *RatesService) Get(code string) (*models.Rate, error) {
+	if code == "" {
+		return nil, errors.New("rate: code is empty")
+	}
+
 	rates := map[string]models.Rate{
 		"ES": {
 			Country:      "Spain",
