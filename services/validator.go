@@ -21,8 +21,7 @@ type ValidatorService struct {
 
 // NewValidatorService creates a new handler for this service.
 func NewValidatorService() *ValidatorService {
-	return &ValidatorService{
-	}
+	return &ValidatorService{}
 }
 
 // Validate will validate the vat number format and the

@@ -7,7 +7,7 @@ import (
 )
 
 // RatesService handle the rates of vat for the given country code.
-type RatesService struct {}
+type RatesService struct{}
 
 // NewRatesService creates a new handler for this service.
 func NewRatesService() *RatesService {
