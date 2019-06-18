@@ -9,7 +9,7 @@ vat is a [Go](https://golang.org/) client library for accessing the Open Service
 ## Getting Started
 
 ### Prerequisites
-- Go 1.11+
+- Go 1.10+
 
 ### Installation
 Run into the terminal the next command
