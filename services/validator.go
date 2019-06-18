@@ -30,9 +30,10 @@ func (s *ValidatorService) Validate(number string) (bool, error) {
 	if number == "" {
 		return false, errors.New("vat: vat number is empty")
 	}
-	format, err := s.ValidateNumberFormat(number)
-	existence := false
 
+	format, err := s.ValidateNumberFormat(number)
+
+	existence := false
 	if format {
 		existence, err = s.ValidateNumberExistence(number)
 	}
@@ -41,7 +42,7 @@ func (s *ValidatorService) Validate(number string) (bool, error) {
 }
 
 // ValidateNumberFormat validates a VAT number by its format.
-func (s *ValidatorService) ValidateNumberFormat(n string) (bool, error) {
+func (s *ValidatorService) ValidateNumberFormat(number string) (bool, error) {
 	patterns := map[string]string{
 		"AT": `U[A-Z0-9]{8}`,
 		"BE": `(0[0-9]{9}|[0-9]{10})`,
@@ -74,17 +75,17 @@ func (s *ValidatorService) ValidateNumberFormat(n string) (bool, error) {
 		"SK": `[0-9]{10}`,
 	}
 
-	if len(n) < 3 {
-		return false, nil
+	if len(number) < 3 {
+		return false, errors.New("vat: vat size is not correct")
 	}
 
-	n = strings.ToUpper(n)
-	pattern, ok := patterns[n[0:2]]
+	number = strings.ToUpper(number)
+	pattern, ok := patterns[number[0:2]]
 	if !ok {
-		return false, nil
+		return false, errors.New("vat: vat first two letters are not correct")
 	}
 
-	matched, err := regexp.MatchString(pattern, n[2:])
+	matched, err := regexp.MatchString(pattern, number[2:])
 	return matched, err
 }
 

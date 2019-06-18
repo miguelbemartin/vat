@@ -17,7 +17,22 @@ func TestValidate(t *testing.T) {
 			foundExpected: false,
 		},
 		{
+			vatNumber:     "ES",
+			errorExpected: "vat: vat size is not correct",
+			foundExpected: false,
+		},
+		{
+			vatNumber:     "XX123412342143243",
+			errorExpected: "vat: vat first two letters are not correct",
+			foundExpected: false,
+		},
+		{
 			vatNumber:     "ES1234123",
+			errorExpected: "",
+			foundExpected: false,
+		},
+		{
+			vatNumber:     "ES04622435A",
 			errorExpected: "",
 			foundExpected: false,
 		},
