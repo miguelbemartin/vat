@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	exist, err := vat.Validate("XXXX")
+	exist, err := vat.Validate("ESXX")
 	if err != nil {
 		fmt.Println("Error: ", err.Error())
 	}

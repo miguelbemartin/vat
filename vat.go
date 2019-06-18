@@ -6,16 +6,16 @@ import (
 )
 
 // Client holds a connection to the service
-type Client struct {
+type client struct {
 	// Services used for communicating with the external service.
 	validator *services.ValidatorService
 	rates     *services.RatesService
 }
 
 // newClient will create http client to create http request
-func newClient() *Client {
+func newClient() *client {
 	// Create a new instance
-	c := &Client{}
+	c := &client{}
 
 	// Init services
 	c.validator = services.NewValidatorService()
