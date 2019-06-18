@@ -27,6 +27,9 @@ func NewValidatorService() *ValidatorService {
 // Validate will validate the vat number format and the
 // existence by using the VIES VAT API (using SOAP).
 func (s *ValidatorService) Validate(number string) (bool, error) {
+	if number == "" {
+		return false, errors.New("vat: vat number is empty")
+	}
 	format, err := s.ValidateNumberFormat(number)
 	existence := false
 

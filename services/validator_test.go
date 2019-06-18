@@ -13,7 +13,7 @@ func TestValidate(t *testing.T) {
 	}{
 		{
 			vatNumber:     "",
-			errorExpected: "",
+			errorExpected: "vat: vat number is empty",
 			foundExpected: false,
 		},
 		{
