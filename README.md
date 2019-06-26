@@ -56,6 +56,12 @@ go test . -v
 
 ## Authors
 * **Miguel Ángel Martín** - [@miguelbemartin](https://twitter.com/miguelbemartin)
+* **Project forked from:** [dannyvankooten](https://github.com/dannyvankooten/vat)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+
+https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/vat/how_vat_works/rates/vat_rates_en.pdf
+
