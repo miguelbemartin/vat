@@ -13,7 +13,7 @@ type client struct {
 }
 
 // newClient will create http client to create http request
-func newClient() *client {
+func NewClient() *client {
 	// Create a new instance
 	c := &client{}
 
@@ -25,13 +25,11 @@ func newClient() *client {
 }
 
 // Validate will validate the vat number
-func Validate(vat string) (bool, error) {
-	client := newClient()
-	return client.validator.Validate(vat)
+func (c client) Validate(vat string) (bool, error) {
+	return c.validator.Validate(vat)
 }
 
 // GetRate will validate the vat number
-func GetRate(countryCode string) (*models.Rate, error) {
-	client := newClient()
-	return client.rates.Get(countryCode)
+func (c client) GetRate(countryCode string) (*models.Rate, error) {
+	return c.rates.Get(countryCode)
 }
