@@ -1,3 +1,7 @@
+// Package vat provides an API Client for working with the Open Service by European Commission.
+//
+// See https://ec.europa.eu/info/index_en for full documentation of the API which this
+// package makes requests to.
 package vat
 
 import (
@@ -5,17 +9,17 @@ import (
 	"github.com/miguelbemartin/vat/services"
 )
 
-// client holds a connection to the service
-type client struct {
+// Client holds a connection to the service
+type Client struct {
 	// Services used for communicating with the external service.
 	validator *services.ValidatorService
 	rates     *services.RatesService
 }
 
 // NewClient will create http client to create http request
-func NewClient() *client {
+func NewClient() *Client {
 	// Create a new instance
-	c := &client{}
+	c := &Client{}
 
 	// Init services
 	c.validator = services.NewValidatorService()
@@ -25,11 +29,11 @@ func NewClient() *client {
 }
 
 // Validate will validate the vat number
-func (c client) Validate(vat string) (bool, error) {
+func (c Client) Validate(vat string) (bool, error) {
 	return c.validator.Validate(vat)
 }
 
 // GetRate will return the rate by the country given
-func (c client) GetRate(countryCode string) (*models.Rate, error) {
+func (c Client) GetRate(countryCode string) (*models.Rate, error) {
 	return c.rates.Get(countryCode)
 }
