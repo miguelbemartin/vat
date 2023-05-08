@@ -2,7 +2,7 @@
 vat is a [Go](https://golang.org/) client library for accessing the Open Service by [European Commission](https://ec.europa.eu/commission/index_en)
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/miguelbemartin/vat)](https://goreportcard.com/report/github.com/miguelbemartin/vat)
-[![Build Status](https://travis-ci.org/miguelbemartin/vat.svg?branch=master)](https://travis-ci.org/miguelbemartin/vat)
+[![Go](https://github.com/miguelbemartin/vat/actions/workflows/go.yml/badge.svg)](https://github.com/miguelbemartin/vat/actions/workflows/go.yml)
 [![codecov](https://codecov.io/gh/miguelbemartin/vat/branch/master/graph/badge.svg)](https://codecov.io/gh/miguelbemartin/vat)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/miguelbemartin/vat/master/LICENSE)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://pkg.go.dev/github.com/miguelbemartin/vat)
